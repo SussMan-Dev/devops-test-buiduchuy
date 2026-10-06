@@ -29,8 +29,16 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo 'Deploying project...'
-                bat 'echo Deploy step'
+                echo 'Deploying to Netlify...'
+
+                withCredentials([
+                    string(
+                        credentialsId: 'netlify-token',
+                        variable: 'NETLIFY_AUTH_TOKEN'
+                    )
+                ]) {
+                    bat 'npx netlify deploy --prod --dir=dist --auth %NETLIFY_AUTH_TOKEN%'
+                }
             }
         }
     }

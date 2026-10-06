@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sunrise Studio</title>
+    <meta
+      name="description"
+      content="Website tĩnh cơ bản với thiết kế hiện đại và dễ tùy chỉnh."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a href="#" class="brand">Sunrise</a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#features">Tính năng</a>
+          <a href="#about">Về chúng tôi</a>
+          <a href="#contact">Liên hệ</a>
+        </nav>
+        <button class="menu-toggle" aria-label="Mở menu">☰</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-content">
+          <div class="hero-text">
+            <p class="eyebrow">Thiết kế sáng tạo</p>
+            <h1>Xây dựng thương hiệu mạnh hơn với website đẹp và nhanh.</h1>
+            <p class="lead">
+              Chúng tôi giúp cá nhân, startup và doanh nghiệp tạo ra trang web
+              hiện đại, dễ nhìn, dễ sử dụng và tối ưu cho mọi thiết bị.
+            </p>
+            <div class="actions">
+              <a href="#contact" class="btn primary">Liên hệ ngay</a>
+              <a href="#features" class="btn secondary">Khám phá</a>
+            </div>
+            <ul class="stats">
+              <li>
+                <strong>120+</strong>
+                <span>Dự án hoàn thành</span>
+              </li>
+              <li>
+                <strong>4.9/5</strong>
+                <span>Đánh giá khách hàng</span>
+              </li>
+              <li>
+                <strong>24/7</strong>
+                <span>Hỗ trợ</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="hero-card">
+            <div class="dashboard">
+              <div class="topbar">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <div class="panel">
+                <div class="mini-block large"></div>
+                <div class="mini-row">
+                  <span class="mini-block"></span>
+                  <span class="mini-block short"></span>
+                </div>
+                <div class="chart">
+                  <span style="height: 35%"></span>
+                  <span style="height: 55%"></span>
+                  <span style="height: 48%"></span>
+                  <span style="height: 72%"></span>
+                  <span style="height: 90%"></span>
+                  <span style="height: 68%"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" class="features">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Tính năng</p>
+            <h2>Điều gì làm cho website của bạn hiệu quả hơn?</h2>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card">
+              <div class="icon">⚡</div>
+              <h3>Tốc độ cao</h3>
+              <p>Thiết kế tối giản, tải nhanh và thân thiện với người dùng.</p>
+            </article>
+            <article class="feature-card">
+              <div class="icon">📱</div>
+              <h3>Responsive</h3>
+              <p>Hiển thị đẹp trên điện thoại, tablet và máy tính để bàn.</p>
+            </article>
+            <article class="feature-card">
+              <div class="icon">🎨</div>
+              <h3>Giao diện hiện đại</h3>
+              <p>Phong cách rõ ràng, ấn tượng và dễ thể hiện thương hiệu.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="about">
+        <div class="container about-grid">
+          <div>
+            <p class="eyebrow">Về chúng tôi</p>
+            <h2>Website không chỉ đẹp, mà còn phải mang lại giá trị.</h2>
+          </div>
+          <p>
+            Sunrise Studio tập trung vào việc xây dựng các trang web đơn giản,
+            chuyên nghiệp và dễ triển khai, giúp bạn giới thiệu dịch vụ, sản phẩm
+            hoặc thương hiệu một cách hiệu quả nhất.
+          </p>
+        </div>
+      </section>
+
+      <section id="contact" class="contact">
+        <div class="container cta-box">
+          <div>
+            <p class="eyebrow">Bắt đầu ngay</p>
+            <h2>Hãy để chúng tôi giúp bạn tạo một website ấn tượng.</h2>
+          </div>
+          <a href="mailto:hello@sunrisestudio.com" class="btn primary">hello@sunrisestudio.com</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© <span id="year"></span> Sunrise Studio. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

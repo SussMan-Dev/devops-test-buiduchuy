@@ -11,11 +11,13 @@ def sendTelegram(String message) {
         )
     ]) {
 
-        bat """
-            curl -s -X POST "https://api.telegram.org/bot%BOT_TOKEN%/sendMessage" ^
-            -d chat_id="%CHAT_ID%" ^
-            --data-urlencode "text=${message}"
-        """
+        withEnv(["TELEGRAM_MESSAGE=${message}"]) {
+            bat '''
+                curl -s -X POST "https://api.telegram.org/bot%BOT_TOKEN%/sendMessage" ^
+                -d chat_id="%CHAT_ID%" ^
+                --data-urlencode "text=%TELEGRAM_MESSAGE%"
+            '''
+        }
     }
 }
 

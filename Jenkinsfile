@@ -84,7 +84,7 @@ Branch: main"""
                     """✅ DEPLOY SUCCESS
 Project: devops-test
 Branch: main
-URL: https://devops-test-nguyen.netlify.app"""
+URL: https://thriving-gingersnap-8087ee.netlify.app/"""
                 )
             }
         }

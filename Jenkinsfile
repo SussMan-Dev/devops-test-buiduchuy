@@ -12,16 +12,25 @@ def sendTelegram(String message) {
     ]) {
 
         withEnv(["TELEGRAM_MESSAGE=${message}"]) {
-            bat '''
-                curl -s -X POST "https://api.telegram.org/bot%BOT_TOKEN%/sendMessage" ^
-                -d chat_id="%CHAT_ID%" ^
-                --data-urlencode "text=%TELEGRAM_MESSAGE%"
+
+            powershell '''
+                $body = @{
+                    chat_id    = $env:CHAT_ID
+                    text       = $env:TELEGRAM_MESSAGE
+                    parse_mode = "Markdown"
+                }
+
+                Invoke-RestMethod `
+                    -Uri "https://api.telegram.org/bot$env:BOT_TOKEN/sendMessage" `
+                    -Method Post `
+                    -Body $body
             '''
         }
     }
 }
 
 pipeline {
+
     agent any
 
     tools {
@@ -56,7 +65,10 @@ pipeline {
 
                 script {
                     sendTelegram(
-                        """🚀 DEPLOY STARTED
+                        """**Deploy Started**
+
+🚀 DEPLOY STARTED
+
 Project: devops-test
 Branch: main"""
                     )
@@ -81,7 +93,10 @@ Branch: main"""
         success {
             script {
                 sendTelegram(
-                    """✅ DEPLOY SUCCESS
+                    """**Deploy Success**
+
+✅ DEPLOY SUCCESS
+
 Project: devops-test
 Branch: main
 URL: https://thriving-gingersnap-8087ee.netlify.app/"""
@@ -92,9 +107,13 @@ URL: https://thriving-gingersnap-8087ee.netlify.app/"""
         failure {
             script {
                 sendTelegram(
-                    """❌ DEPLOY FAILED
+                    """**Deploy Failed**
+
+❌ DEPLOY FAILED
+
 Project: devops-test
 Branch: main
+
 Please check Jenkins."""
                 )
             }

@@ -1,3 +1,24 @@
+def sendTelegram(String message) {
+
+    withCredentials([
+        string(
+            credentialsId: 'telegram-token',
+            variable: 'BOT_TOKEN'
+        ),
+        string(
+            credentialsId: 'telegram-chat-id',
+            variable: 'CHAT_ID'
+        )
+    ]) {
+
+        bat """
+            curl -s -X POST "https://api.telegram.org/bot%BOT_TOKEN%/sendMessage" ^
+            -d chat_id="%CHAT_ID%" ^
+            --data-urlencode "text=${message}"
+        """
+    }
+}
+
 pipeline {
     agent any
 
@@ -6,6 +27,7 @@ pipeline {
     }
 
     stages {
+
         stage('Checkout') {
             steps {
                 echo 'Checking out source...'
@@ -29,6 +51,15 @@ pipeline {
 
         stage('Deploy') {
             steps {
+
+                script {
+                    sendTelegram(
+                        """🚀 DEPLOY STARTED
+Project: devops-test
+Branch: main"""
+                    )
+                }
+
                 echo 'Deploying to Netlify...'
 
                 withCredentials([
@@ -44,12 +75,27 @@ pipeline {
     }
 
     post {
+
         success {
-            echo 'DEPLOY SUCCESS'
+            script {
+                sendTelegram(
+                    """✅ DEPLOY SUCCESS
+Project: devops-test
+Branch: main
+URL: https://devops-test-nguyen.netlify.app"""
+                )
+            }
         }
 
         failure {
-            echo 'DEPLOY FAILED'
+            script {
+                sendTelegram(
+                    """❌ DEPLOY FAILED
+Project: devops-test
+Branch: main
+Please check Jenkins."""
+                )
+            }
         }
     }
 }
